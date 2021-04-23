@@ -4,14 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.Repositories
 {
-    public class CategoryRepository : ICategoryDal
+    public class CategoryRepository : GenericRepository<Category>,ICategoryDal
     {
-        Context c = new Context();
+       /* Context c = new Context();
         DbSet<Category> _object;
 
         public void Delete(Category category)
@@ -30,9 +31,14 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.ToList();
         }
 
-        public void Update(Category category)
+        public List<Category> List(Expression<Func<Category, bool>> filter)
         {
             throw new NotImplementedException();
         }
+
+        public void Update(Category category)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }
