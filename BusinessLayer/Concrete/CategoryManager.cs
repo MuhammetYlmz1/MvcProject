@@ -17,14 +17,14 @@ namespace BusinessLayer.Concrete
         }
         public void CategoryAddBL(Category category)
         {
-            if(category.CategoryName=="" || category.CategoryName.Length<=3|| category.CategoryDescription=="" || category.CategoryName.Length >= 52)
+            //if(category.CategoryName=="" || category.CategoryName.Length<=3|| category.CategoryDescription=="" || category.CategoryName.Length >= 52)
             {
                 //bu kuralları daha sonra validation kuralları yazacağız
                 //hata mesajı
+                //}
+                repository.Insert(category);
+
             }
-            repository.Insert(category);
-
         }
-
     }
 }
