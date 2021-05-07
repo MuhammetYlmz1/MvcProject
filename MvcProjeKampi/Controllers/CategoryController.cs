@@ -15,41 +15,28 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
+
         public ActionResult GetCategoryList()
         {
             var categoryValues = categoryManager.GetCategoryList();
             return View(categoryValues);
         }
+        [HttpGet]
+        public ActionResult CategoryAdd()
+        {
+            return View();
+        }
 
-
-        //public ActionResult AddCategory(Category category)
-        //{
-        //    CategoryValidator categoryValidator = new CategoryValidator();
-        //    ValidationResult validationResult = categoryValidator.Validate(category);
-        //    if (validationResult.IsValid)
-        //    {
-        //        categoryManager.CategoryAdd(category);
-        //        return RedirectToAction("GetCategoryList");
-        //    }
-        //    else
-        //    {
-        //        foreach (var item in validationResult.Errors)
-        //        {
-        //            ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-        //        }
-        //    }
-        //    return RedirectToAction("GetCategoryList");
-        //}
 
         [HttpPost]
-        public ActionResult AddCategory(Category category)
+        public ActionResult CategoryAdd(Category category)
         {
             CategoryValidator categoryValidator = new CategoryValidator();
             ValidationResult validationResult = categoryValidator.Validate(category);
             if (validationResult.IsValid)
             {
                 categoryManager.CategoryAdd(category);
-                return RedirectToAction("GetCategoryList");
+                return View();
 
             }
             else
@@ -59,10 +46,13 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return RedirectToAction("GetCategoryList");
+            return View();
+//RedirectToAction("GetCategoryList");
 
 
         }
 
+
     }
+    
 }
