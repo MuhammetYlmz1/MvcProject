@@ -43,8 +43,28 @@ namespace MvcProjeKampi.Controllers
             }
             return View();
         }
+        public ActionResult DeleteCategory(int id)
+        {
+            var category = categoryManager.GetById(id);
+            categoryManager.CategoryDelete(category);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {//Burası seçtiğimiz id de ki bilgileri ekranıma getiriyor
+            var categoryValue = categoryManager.GetById(id);
+            return View(categoryValue);
 
-        
+        }
+        [HttpPost]
+        public ActionResult EditCategory(Category category)
+        {
+            categoryManager.CategoryUpdate(category);
+            return RedirectToAction("Index");
+
+        }
+
+
 
     }
 }
