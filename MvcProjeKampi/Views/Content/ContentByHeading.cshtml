@@ -1,0 +1,60 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "ContentByHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+                            <!-- timeline time label -->
+                            @foreach (var item in Model)
+                            {
+                                <h1 style="padding-left:45px;">@item.Heading.HeadingName</h1>
+                                <div class="time-label">
+
+                                    <span class="bg-success">@item.ContentDate.ToShortDateString()</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <div>
+                                    <img class="fas fa-comment" src="@item.Writer.WriterImage"></img>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header"><a href="#">@item.Writer.Writername @item.Writer.WriterSurName</a> </h3>
+                                        <table class="table table-bordered">
+
+
+                                            <div class="timeline-body">
+
+                                                @item.ContentValue
+                                            </div>
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- END timeline item -->
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>

@@ -14,6 +14,7 @@ namespace EntityLayer.Concrete
         [StringLength(1000)]
         public string ContentValue { get; set; }
         public DateTime ContentDate { get; set; }
+        public bool ContentStatus { get; set; }
 
         //İlişkiler
         public int HeadingID { get; set; }//başlık ile içeriği ilişkilendirmiş olduk
